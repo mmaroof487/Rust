@@ -55,3 +55,16 @@
 //     // s.len()
 //     s.chars().count()
 // }
+
+// fn main(){
+//     let vec=vec![1,2,3,4,5,6,7,8,9,10];
+//     let iter = vec.iter();
+//     let iter1=iter.filter(|x| *x%2!=0);
+//     let iter2 = iter1.map(|x|x*2);
+//     for val in iter2{
+//         println!("{val}")
+//     }
+//     for val in vec{
+//         println!("{val}")
+//     }
+// }

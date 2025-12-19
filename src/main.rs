@@ -59,12 +59,24 @@
 // fn main(){
 //     let vec=vec![1,2,3,4,5,6,7,8,9,10];
 //     let iter = vec.iter();
-//     let iter1=iter.filter(|x| *x%2!=0);
-//     let iter2 = iter1.map(|x|x*2);
-//     for val in iter2{
+//     let iter1=iter.filter(|x| *x%2!=0).map(|x|x*2);
+//     for val in iter1{
 //         println!("{val}")
 //     }
 //     for val in vec{
 //         println!("{val}")
 //     }
 // }
+
+fn main(){
+    let ans;
+    {
+        let s1= String::from("hello");
+        let s2= String::from("worlds");
+        ans= longest(s1,s2);
+    }
+    println!("The longest string is {}",ans);
+}
+fn longest(a:String, b:String)->String{
+    if a.len()>b.len() {return a;} else {return b;}
+}

@@ -1,94 +1,239 @@
+// =====================================================
+// BEGINNER
+// =====================================================
+
+// -------------------- HELLO WORLD --------------------
 // fn main() {
-// let mut s1= String::from("hello");
-// update(&mut s1);
-// println!("{}",s1);
-// }
-// fn update(s:&mut String){
-//     s.push_str(" world");
+//     println!("Hello, Rust!");
 // }
 
+// -------------------- VARIABLES --------------------
+// fn main() {
+//     let x = 5;
+//     let mut y = 10;
+//     y += x;
+//     println!("x = {}, y = {}", x, y);
+// }
+
+// -------------------- FUNCTIONS --------------------
+// fn add(a: i32, b: i32) -> i32 {
+//     a + b
+// }
+// fn main() {
+//     println!("Sum = {}", add(3, 4));
+// }
+
+// -------------------- OWNERSHIP --------------------
+// fn main() {
+//     let s1 = String::from("hello");
+//     let s2 = s1;
+//     // println!("{}", s1); // moved
+//     println!("{}", s2);
+// }
+
+// -------------------- BORROWING --------------------
+// fn len(s: &String) -> usize {
+//     s.len()
+// }
+// fn main() {
+//     let s = String::from("hello");
+//     println!("{}", len(&s));
+// }
+
+// -------------------- STRUCT --------------------
 // struct Rect {
-//    width: u32,
-//    height: u32,
+//     w: u32,
+//     h: u32,
 // }
 // impl Rect {
 //     fn area(&self) -> u32 {
-//          self.width * self.height
+//         self.w * self.h
 //     }
 // }
 // fn main() {
-//     let rect = Rect {
-//         width: 30,
-//         height: 50,
-//     };
-//     print!("The area of the rectangle is {}", rect.area());
+//     let r = Rect { w: 10, h: 20 };
+//     println!("Area = {}", r.area());
 // }
 
-// fn main(){
-//     let num = 12;
-//     print!("The value of fibonacci of num is: {}",fib(num));
-// }
-// fn fib(n:u32) -> u32 {
-//     if n <= 1 {
-//         return n;
-//     }
-//     fib(n-1) + fib(n-2)
-// }
+// =====================================================
+// INTERMEDIATE
+// =====================================================
 
-// fn fib(n: u32) -> u32 {
-//     let mut a: u32 = 0;
-//     let mut b: u32 = 1;
-//     for _ in 0..n {
-//         let temp = a + b;
-//         a = b;
-//         b = temp;
-//     }
-//     a
+// -------------------- ENUM + MATCH --------------------
+// enum Status {
+//     Success,
+//     Error(String),
 // }
-
-// fn main(){
-//     let s11= String::from("hello");
-//     print!("{}",len_word(&s11));
-// }
-
-// fn len_word(s: &String) -> usize {
-//     // s.len()
-//     s.chars().count()
-// }
-
-// fn main(){
-//     let vec=vec![1,2,3,4,5,6,7,8,9,10];
-//     let iter = vec.iter();
-//     let iter1=iter.filter(|x| *x%2!=0).map(|x|x*2);
-//     for val in iter1{
-//         println!("{val}")
-//     }
-//     for val in vec{
-//         println!("{val}")
+// fn main() {
+//     let s = Status::Error(String::from("404"));
+//     match s {
+//         Status::Success => println!("OK"),
+//         Status::Error(msg) => println!("Error: {}", msg),
 //     }
 // }
 
-// fn main(){
-//     let ans;
-//     {
-//         let s1= String::from("hello");
-//         let s2= String::from("worlds");
-//         ans= longest(s1,s2);
+// -------------------- OPTION --------------------
+// fn find_even(n: i32) -> Option<i32> {
+//     if n % 2 == 0 { Some(n) } else { None }
+// }
+// fn main() {
+//     match find_even(3) {
+//         Some(v) => println!("Even: {}", v),
+//         None => println!("Odd"),
 //     }
-//     println!("The longest string is {}",ans);
-// }
-// fn longest(a:String, b:String)->String{
-//     if a.len()>b.len() {return a;} else {return b;}
 // }
 
-// fn main(){
-//     let mut counter = 0;
-//     let mut increase = |counter|
-//         counter + 1;
-        // println!("{}", counter);
+// -------------------- RESULT --------------------
+// fn divide(a: i32, b: i32) -> Result<i32, &'static str> {
+//     if b == 0 { Err("divide by zero") } else { Ok(a / b) }
+// }
+// fn main() {
+//     println!("{:?}", divide(10, 2));
+// }
 
-//    print!("{}", increase(counter));
-    // increase(counter);
-    // increase(counter);
-    // println!("Final counter value: {}", counter);
+// -------------------- ITERATORS --------------------
+// fn main() {
+//     let v = vec![1, 2, 3, 4, 5];
+//     let sum: i32 = v.iter().filter(|x| *x % 2 == 0).sum();
+//     println!("Sum of evens: {}", sum);
+// }
+
+// -------------------- CLOSURES --------------------
+// fn main() {
+//     let factor = 2;
+//     let mul = |x| x * factor;
+//     println!("{}", mul(5));
+// }
+
+// -------------------- LIFETIMES --------------------
+// fn longest<'a>(a: &'a str, b: &'a str) -> &'a str {
+//     if a.len() > b.len() { a } else { b }
+// }
+// fn main() {
+//     let s1 = "hello";
+//     let s2 = "world!!!";
+//     println!("{}", longest(s1, s2));
+// }
+
+// =====================================================
+// ADVANCED
+// =====================================================
+
+// -------------------- TRAITS --------------------
+// trait Shape {
+//     fn area(&self) -> u32;
+// }
+// struct Square {
+//     side: u32,
+// }
+// impl Shape for Square {
+//     fn area(&self) -> u32 {
+//         self.side * self.side
+//     }
+// }
+// fn main() {
+//     let s = Square { side: 4 };
+//     println!("Area = {}", s.area());
+// }
+
+// -------------------- GENERICS --------------------
+// fn largest<T: PartialOrd + Copy>(list: &[T]) -> T {
+//     let mut max = list[0];
+//     for &item in list {
+//         if item > max {
+//             max = item;
+//         }
+//     }
+//     max
+// }
+// fn main() {
+//     let nums = vec![1, 3, 2, 5, 4];
+//     println!("{}", largest(&nums));
+// }
+
+// -------------------- TRAIT OBJECTS --------------------
+// trait Draw {
+//     fn draw(&self);
+// }
+// struct Circle;
+// impl Draw for Circle {
+//     fn draw(&self) {
+//         println!("Drawing circle");
+//     }
+// }
+// fn main() {
+//     let shapes: Vec<Box<dyn Draw>> = vec![Box::new(Circle)];
+//     for s in shapes {
+//         s.draw();
+//     }
+// }
+
+// -------------------- SMART POINTER: BOX --------------------
+// fn main() {
+//     let b = Box::new(5);
+//     println!("{}", b);
+// }
+
+// -------------------- RC (REFERENCE COUNTING) --------------------
+// use std::rc::Rc;
+// fn main() {
+//     let a = Rc::new(10);
+//     let b = Rc::clone(&a);
+//     println!("a={}, b={}", a, b);
+// }
+
+// -------------------- REFCELL (INTERIOR MUTABILITY) --------------------
+// use std::cell::RefCell;
+// fn main() {
+//     let data = RefCell::new(5);
+//     *data.borrow_mut() += 1;
+//     println!("{}", data.borrow());
+// }
+
+// -------------------- THREADS --------------------
+// use std::thread;
+// fn main() {
+//     let handle = thread::spawn(|| {
+//         println!("Hello from thread");
+//     });
+//     handle.join().unwrap();
+// }
+
+// -------------------- CHANNELS --------------------
+// use std::sync::mpsc;
+// use std::thread;
+// fn main() {
+//     let (tx, rx) = mpsc::channel();
+//     thread::spawn(move || {
+//         tx.send("hello").unwrap();
+//     });
+//     println!("{}", rx.recv().unwrap());
+// }
+
+// -------------------- ASYNC / AWAIT --------------------
+// use tokio::time::{sleep, Duration};
+// #[tokio::main]
+// async fn main() {
+//     sleep(Duration::from_secs(1)).await;
+//     println!("Done");
+// }
+
+// -------------------- MANUAL FUTURE --------------------
+// use std::future::Future;
+// use std::pin::Pin;
+// use std::task::{Context, Poll};
+// struct MyFuture {
+//     done: bool,
+// }
+// impl Future for MyFuture {
+//     type Output = ();
+//     fn poll(mut self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<()> {
+//         if self.done {
+//             Poll::Ready(())
+//         } else {
+//             self.done = true;
+//             cx.waker().wake_by_ref();
+//             Poll::Pending
+//         }
+//     }
 // }

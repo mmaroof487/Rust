@@ -68,15 +68,27 @@
 //     }
 // }
 
-fn main(){
-    let ans;
-    {
-        let s1= String::from("hello");
-        let s2= String::from("worlds");
-        ans= longest(s1,s2);
-    }
-    println!("The longest string is {}",ans);
-}
-fn longest(a:String, b:String)->String{
-    if a.len()>b.len() {return a;} else {return b;}
+// fn main(){
+//     let ans;
+//     {
+//         let s1= String::from("hello");
+//         let s2= String::from("worlds");
+//         ans= longest(s1,s2);
+//     }
+//     println!("The longest string is {}",ans);
+// }
+// fn longest(a:String, b:String)->String{
+//     if a.len()>b.len() {return a;} else {return b;}
+// }
+
+// fn main(){
+//     let mut counter = 0;
+//     let mut increase = |counter|
+//         counter + 1;
+        // println!("{}", counter);
+
+//    print!("{}", increase(counter));
+    // increase(counter);
+    // increase(counter);
+    // println!("Final counter value: {}", counter);
 }
